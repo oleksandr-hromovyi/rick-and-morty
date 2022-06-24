@@ -3,11 +3,28 @@ import {Accordion , Form, ThemeProvider} from 'react-bootstrap';
 import './CharFilter.css'
 
 
-const CharFilter = ({setSearch, setPageNumber}) => {
+const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}) => {
+  let gender = ["female", "male", "genderless", "unknown"];
+  let status = ["alive", "dead", "unknown"];
+  let species = [
+    "Human",
+    "Alien",
+    "Humanoid",
+    "Poopybutthole",
+    "Mythological",
+    "Unknown",
+    "Animal",
+    "Disease",
+    "Robot",
+    "Cronenberg",
+    "Planet",
+  ];
+  
   const ref = useRef(null);
-let clear = () => {
+  let clear = () => {
   setSearch("");
   ref.current.value = '';
+  setGender("");
 }
   return (
     <div className="char__filters">
@@ -28,19 +45,56 @@ let clear = () => {
             <Accordion.Item eventKey="0">
             <Accordion.Header>Gender</Accordion.Header>
             <Accordion.Body>
-              1 2 3
+      
+{gender.sort().map((item, index)=>{
+  return (<Form.Check
+    name="gender" 
+    key={index}
+    type='radio'
+    id={`${item}-gender`}
+    label={item}
+    onClick={()=>{
+      setPageNumber(1);
+      setGender(item);
+
+    }}
+    
+  />)})}
+
+
+           
             </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
             <Accordion.Header>Status</Accordion.Header>
             <Accordion.Body>
-             1 2 3
+            {status.sort().map((item, index)=>{
+  return (<Form.Check
+    name="gender" 
+    key={index}
+    type='radio'
+    id={`${item}-status`}
+    label={item}
+    
+  />)
+
+})}
             </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2">
             <Accordion.Header>Species</Accordion.Header>
             <Accordion.Body>
-            1 2 3
+            {species.sort().map((item, index)=>{
+  return (<Form.Check
+    name="gender" 
+    key={index}
+    type='radio'
+    id={`${item}-species`}
+    label={item}
+    
+  />)
+
+})}
             </Accordion.Body>
             </Accordion.Item>
             </Accordion>

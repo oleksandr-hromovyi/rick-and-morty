@@ -45,8 +45,12 @@ const App = () => {
   
   let [pageNumber, setPageNumber] = useState(1);
   let [search, setSearch] = useState("");
+  let [gender, setGender] = useState("");
+  let [status, setStatus] = useState("");
+  let [species, setSpecies] = useState("");
 
-  let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}`;
+
+  let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&gender=${gender}`;
   let [fetchData, setfetchData] = useState([]);
   
   let {results, info} = fetchData;
@@ -64,7 +68,12 @@ const App = () => {
     <Header/>
       <main>
         <div className="char__content">
-          <CharFilter setSearch={setSearch} setPageNumber={setPageNumber}/>
+          <CharFilter 
+              setSearch={setSearch} 
+              setPageNumber={setPageNumber}
+              setGender={setGender}
+              setStatus={setStatus}
+              setSpecies={setSpecies}/>
           <Cards results={results}/>
         </div>              
       </main>  
