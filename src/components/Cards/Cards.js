@@ -85,7 +85,7 @@ export default Cards;
 */}
 const Cards = ({results}) => {
   let display;
-  console.log(results)
+
   if(results) {
 
     display = results.map(item => {

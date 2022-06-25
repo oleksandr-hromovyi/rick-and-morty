@@ -30,10 +30,15 @@
     line-height:32px
 }
 
-.app__menu ul li {
-    margin:0 8px
-}
+
 
 .app__menu ul li a:hover{
-    color:#9F0013
+    color:#9F0013;
+}
+
+.nav-link.active {
+    color:#9F0013;
+}
+.nav-link {
+    color: #000
 }

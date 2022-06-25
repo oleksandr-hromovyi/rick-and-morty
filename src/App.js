@@ -3,45 +3,35 @@ import React, { useEffect, useState } from 'react'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import {Component} from 'react';
+
 import Header from './components/Header/Header';
 import Cards from './components/Cards/Cards';
 import Pagination from './components/Pagination/Pagination';
 import CharPage from './components/CharPage/CharPage';
 import CharFilter from './components/CharFilter/CharFilter';
+import Episodes from './components/Pages/Episodes';
+import Location from './components/Pages/Location';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-{/*class App extends Component {
-  state = {
-    selectedCard: null,
-  }
 
-  onCardSelected = (id) => {
-    this.setState({
-      selectedCard: id
-    })
-  }
-render(){
+
+export default function App() {
   return (
-    <div className="app">
-    <Header/>
-      <main>
-        <div className="char__content">
-          <Filters/>
-          <Cards onCardSelected={this.onCardSelected}/>
-        </div>              
-      </main>  
-      <Pagination/>
-      <CharPage charId={this.state.selectedCard}/>
-
-    </div>
-
-  );
-}
+    <BrowserRouter>
+ <div className="app">
+ <Header/>
+ </div>
+ <Routes>
+  <Route path="/" element={<Home />}/>
+  <Route path="/episodes" element={<Episodes />}/>
+  <Route path="/location" element={<Location />}/>
+ </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;*/}
 
-const App = () => {
+const Home = () => {
   
   let [pageNumber, setPageNumber] = useState(1);
   let [search, setSearch] = useState("");
@@ -50,7 +40,7 @@ const App = () => {
   let [species, setSpecies] = useState("");
 
 
-  let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&gender=${gender}`;
+  let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&gender=${gender}&status=${status}&species=${species}`;
   let [fetchData, setfetchData] = useState([]);
   
   let {results, info} = fetchData;
@@ -64,8 +54,8 @@ const App = () => {
    })()
   }, [_api])
   return (
-    <div className="app">
-    <Header/>
+   <>
+    
       <main>
         <div className="char__content">
           <CharFilter 
@@ -79,12 +69,8 @@ const App = () => {
       </main>  
       <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber}/>
       <CharPage/>
-
-    </div>
+      </>
+  
   )
 }
-
-export default App
-
-
 

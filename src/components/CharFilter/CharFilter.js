@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Accordion , Form, ThemeProvider} from 'react-bootstrap';
+import {Accordion , Form} from 'react-bootstrap';
 import './CharFilter.css'
 
 
@@ -21,10 +21,16 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
   ];
   
   const ref = useRef(null);
+ 
   let clear = () => {
   setSearch("");
   ref.current.value = '';
+  
+console.log(Form.Control)
   setGender("");
+  setStatus("");
+  setSpecies("");
+
 }
   return (
     <div className="char__filters">
@@ -37,10 +43,8 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
       onChange={(e) => {
         setPageNumber(1);
         setSearch(e.target.value)}}
-        ref={ref}>
-          
-           
-      </Form.Control>
+       ref={ref}>
+    </Form.Control>
         <Accordion>
             <Accordion.Item eventKey="0">
             <Accordion.Header>Gender</Accordion.Header>
@@ -59,6 +63,7 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
 
     }}
     
+    
   />)})}
 
 
@@ -75,10 +80,14 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
     type='radio'
     id={`${item}-status`}
     label={item}
+    onClick={()=>{
+      setPageNumber(1);
+      setStatus(item);
+    }}
     
-  />)
+    />)})}    
+ 
 
-})}
             </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="2">
@@ -91,10 +100,12 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
     type='radio'
     id={`${item}-species`}
     label={item}
+    onClick={()=>{
+      setPageNumber(1);
+      setSpecies(item);
+    }}
     
-  />)
-
-})}
+    />)})}  
             </Accordion.Body>
             </Accordion.Item>
             </Accordion>
@@ -103,7 +114,7 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
     className="btn btn-primary"
     
     onClick={clear}  
-    type="reset"  >
+    type="reset">
       Clear all filters</button>
     </div>
   )
