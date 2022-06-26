@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -7,29 +7,30 @@ import './App.css';
 import Header from './components/Header/Header';
 import Cards from './components/Cards/Cards';
 import Pagination from './components/Pagination/Pagination';
-import CharPage from './components/CharPage/CharPage';
 import CharFilter from './components/CharFilter/CharFilter';
 import Episodes from './components/Pages/Episodes';
 import Location from './components/Pages/Location';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {CardInfo}  from './components/Cards/CardInfo';
 
 
 
 export default function App() {
   return (
     <BrowserRouter>
- <div className="app">
- <Header/>
- </div>
- <Routes>
-  <Route path="/" element={<Home />}/>
-  <Route path="/episodes" element={<Episodes />}/>
-  <Route path="/location" element={<Location />}/>
- </Routes>
+      <div className="app">
+        <Header/>
+      </div>
+    <Routes>
+      <Route path="/" element={<Home />}/>
+      <Route path="/:id" element={<CardInfo />}/>
+      <Route path="/episodes" element={<Episodes />}/>
+      <Route path="episodes/:id" element={<CardInfo />}/>
+      <Route path="/location" element={<Location />}/>
+      <Route path="location/:id" element={<CardInfo />}/>
+     </Routes>
     </BrowserRouter>
   )
 }
-
 
 const Home = () => {
   
@@ -39,12 +40,10 @@ const Home = () => {
   let [status, setStatus] = useState("");
   let [species, setSpecies] = useState("");
 
-
   let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&gender=${gender}&status=${status}&species=${species}`;
-  let [fetchData, setfetchData] = useState([]);
-  
-  let {results, info} = fetchData;
 
+  let [fetchData, setfetchData] = useState([]);
+  let {results, info} = fetchData;
 
   useEffect(()=>{
     (async function(){
@@ -53,24 +52,25 @@ const Home = () => {
       
    })()
   }, [_api])
+
+
   return (
-   <>
-    
-      <main>
-        <div className="char__content">
-          <CharFilter 
-              setSearch={setSearch} 
-              setPageNumber={setPageNumber}
-              setGender={setGender}
-              setStatus={setStatus}
-              setSpecies={setSpecies}/>
-          <Cards results={results}/>
-        </div>              
-      </main>  
-      <Pagination info={info} setPageNumber={setPageNumber} pageNumber={pageNumber}/>
-      <CharPage/>
-      </>
-  
-  )
+  <>
+    <main>
+      <div className="char__content">
+        <CharFilter 
+          setSearch={setSearch} 
+          setPageNumber={setPageNumber}
+          setGender={setGender}
+          setStatus={setStatus}
+          setSpecies={setSpecies}/>
+        <Cards page="/" results={results}/>
+      </div>              
+    </main>  
+    <Pagination
+      info={info}
+      setPageNumber={setPageNumber}
+      pageNumber={pageNumber}/>
+  </> )
 }
 

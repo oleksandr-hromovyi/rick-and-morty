@@ -24,100 +24,83 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
  
   let clear = () => {
   setSearch("");
-  ref.current.value = '';
-  
-console.log(Form.Control)
   setGender("");
   setStatus("");
   setSpecies("");
-
+  ref.current.value = '';
 }
-  return (
+
+  let renderRadioBtn = (info, name) => {
+    return ( info.sort().map((item, index)=>{
+      return (<Form.Check
+        name={name} 
+        key={index}
+        type='radio'
+        id={`${item}-status`}
+        label={item}
+        onClick={()=>{
+          setPageNumber(1);
+          switch (name) {
+            case 'gender': 
+              setGender(item);
+              break;
+            case 'status':
+              setStatus(item);
+              break;
+            case 'species':
+              setSpecies(item);
+              break;
+            default:
+              break;
+        }
+      }}/>)
+    }))
+  }
+
+return (
     <div className="char__filters">
         <span className='filters__span text-primary text-decoration-underline text-center'><b>Filters</b></span><br/> 
- 
             
-    <Form.Control 
-      type="text" 
-      placeholder="Search" 
-      onChange={(e) => {
-        setPageNumber(1);
-        setSearch(e.target.value)}}
-       ref={ref}>
-    </Form.Control>
+        <Form.Control 
+            type="text"
+            placeholder="Search" 
+            onChange={(e) => {
+                setPageNumber(1);
+                setSearch(e.target.value)}}
+                ref={ref}>
+        </Form.Control>
+        
         <Accordion>
             <Accordion.Item eventKey="0">
             <Accordion.Header>Gender</Accordion.Header>
-            <Accordion.Body>
-      
-{gender.sort().map((item, index)=>{
-  return (<Form.Check
-    name="gender" 
-    key={index}
-    type='radio'
-    id={`${item}-gender`}
-    label={item}
-    onClick={()=>{
-      setPageNumber(1);
-      setGender(item);
-
-    }}
-    
-    
-  />)})}
-
-
-           
+            <Accordion.Body>      
+            {renderRadioBtn(gender, "gender")}
             </Accordion.Body>
             </Accordion.Item>
+
             <Accordion.Item eventKey="1">
             <Accordion.Header>Status</Accordion.Header>
             <Accordion.Body>
-            {status.sort().map((item, index)=>{
-  return (<Form.Check
-    name="gender" 
-    key={index}
-    type='radio'
-    id={`${item}-status`}
-    label={item}
-    onClick={()=>{
-      setPageNumber(1);
-      setStatus(item);
-    }}
-    
-    />)})}    
- 
-
-            </Accordion.Body>
+            {renderRadioBtn(status, "status")}
+             </Accordion.Body>
             </Accordion.Item>
+            
             <Accordion.Item eventKey="2">
             <Accordion.Header>Species</Accordion.Header>
             <Accordion.Body>
-            {species.sort().map((item, index)=>{
-  return (<Form.Check
-    name="gender" 
-    key={index}
-    type='radio'
-    id={`${item}-species`}
-    label={item}
-    onClick={()=>{
-      setPageNumber(1);
-      setSpecies(item);
-    }}
-    
-    />)})}  
+            {renderRadioBtn(species, "species")}
             </Accordion.Body>
             </Accordion.Item>
-            </Accordion>
+        </Accordion>
 
-            <button    
-    className="btn btn-primary"
-    
-    onClick={clear}  
-    type="reset">
-      Clear all filters</button>
+        <button
+            className="btn btn-primary"
+            onClick={clear}  
+            type="reset">
+                Clear all filters
+        </button>
     </div>
   )
 }
 
-export default CharFilter
+export default CharFilter;
