@@ -12,8 +12,6 @@ import Episodes from './components/Pages/Episodes';
 import Location from './components/Pages/Location';
 import {CardInfo}  from './components/Cards/CardInfo';
 
-
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -39,20 +37,19 @@ const Home = () => {
   let [gender, setGender] = useState("");
   let [status, setStatus] = useState("");
   let [species, setSpecies] = useState("");
+ 
 
   let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&gender=${gender}&status=${status}&species=${species}`;
 
   let [fetchData, setfetchData] = useState([]);
   let {results, info} = fetchData;
-
+  console.log(fetchData)
   useEffect(()=>{
     (async function(){
-      let response = await fetch(_api).then(res=>res.json());
-            setfetchData(response)
-      
-   })()
-  }, [_api])
-
+      let response = await fetch(_api).then(res=>res.json())
+      setfetchData(response)
+      })()
+    }, [_api])
 
   return (
   <>
@@ -64,7 +61,7 @@ const Home = () => {
           setGender={setGender}
           setStatus={setStatus}
           setSpecies={setSpecies}/>
-        <Cards page="/" results={results}/>
+        <Cards page="/" results={results} />
       </div>              
     </main>  
     <Pagination

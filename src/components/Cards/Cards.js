@@ -7,7 +7,7 @@ import './Cards.css'
 
 const Cards = ({results, page}) => {
   let display;
-
+  console.log(results)
   if(results) {
     display = results.map(item => {
       let {id} = item
@@ -16,13 +16,14 @@ const Cards = ({results, page}) => {
         'Dead': 'danger',
         'unknown': 'secondary',
       }
+      
       return (
         <Link 
             to={`${page}${id}`}
             key={item.id}>
           <Card>
               <Badge pill bg={status[item.status]}>{item.status}</Badge> 
-              <Card.Img variant="top" src={item.image} />
+              <Card.Img variant="top" src={item.image}/> 
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>Last location: {item.location.name}</Card.Text>
@@ -33,8 +34,10 @@ const Cards = ({results, page}) => {
       )
     })
     
-  } else {
-        display = <span>Sorry, there is no results for your request</span>;
+  } if (!results?.length){
+        display = <span>Sorry, there is no information</span>;
+  } if (!results){
+        display = <span>Sorry, we didn't find matches</span>;
       }
   return (
     <div className="char__list">{display}</div>

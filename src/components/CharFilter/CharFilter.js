@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {Accordion , Form} from 'react-bootstrap';
 import './CharFilter.css'
 
@@ -20,14 +20,11 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
     "Planet",
   ];
   
-  const ref = useRef(null);
- 
-  let clear = () => {
+let clear = () => {
   setSearch("");
   setGender("");
   setStatus("");
   setSpecies("");
-  ref.current.value = '';
 }
 
   let renderRadioBtn = (info, name) => {
@@ -60,14 +57,14 @@ const CharFilter = ({setSearch, setPageNumber, setGender, setStatus, setSpecies}
 return (
     <div className="char__filters">
         <span className='filters__span text-primary text-decoration-underline text-center'><b>Filters</b></span><br/> 
-            
+        <Form>   
         <Form.Control 
             type="text"
             placeholder="Search" 
             onChange={(e) => {
                 setPageNumber(1);
                 setSearch(e.target.value)}}
-                ref={ref}>
+               >
         </Form.Control>
         
         <Accordion>
@@ -99,6 +96,7 @@ return (
             type="reset">
                 Clear all filters
         </button>
+        </Form> 
     </div>
   )
 }

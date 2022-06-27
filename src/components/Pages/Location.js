@@ -11,8 +11,6 @@ const Location = () => {
   let {name, type, dimension}= fetchData; 
   let [locationsAmount, setLocationsAmount] = useState("");
 
-console.log(fetchData)
-
 
 
   useEffect(()=>{
