@@ -33,7 +33,7 @@ let clear = () => {
         name={name} 
         key={index}
         type='radio'
-        id={`${item}-status`}
+        id={`${item}-status-${name}`}
         label={item}
         onClick={()=>{
           setPageNumber(1);

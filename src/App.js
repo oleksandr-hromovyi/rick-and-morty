@@ -11,10 +11,11 @@ import CharFilter from './components/CharFilter/CharFilter';
 import Episodes from './components/Pages/Episodes';
 import Location from './components/Pages/Location';
 import {CardInfo}  from './components/Cards/CardInfo';
+import Register from './components/Register/Register';
 
 export default function App() {
   return (
-    <BrowserRouter>
+/*     <BrowserRouter>
       <div className="app">
         <Header/>
       </div>
@@ -26,7 +27,8 @@ export default function App() {
       <Route path="/location" element={<Location />}/>
       <Route path="location/:id" element={<CardInfo />}/>
      </Routes>
-    </BrowserRouter>
+    </BrowserRouter> */
+     <Register/>
   )
 }
 
@@ -53,7 +55,8 @@ const Home = () => {
 
   return (
   <>
-    <main>
+ 
+    {/* <main>
       <div className="char__content">
         <CharFilter 
           setSearch={setSearch} 
@@ -67,7 +70,7 @@ const Home = () => {
     <Pagination
       info={info}
       setPageNumber={setPageNumber}
-      pageNumber={pageNumber}/>
+      pageNumber={pageNumber}/> */}
   </> )
 }
 
