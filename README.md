@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Rick and Morty Wiki
+
+The project allows you to quickly search information that you for the criteria of interest. 
+For convenience was created filtering by characters, episodes and locations.
+Also was created authorization and authentication forms with using Firebase.
+This project was made with React and some of the most used front-end libraries.
+
+Link of the Public API used: [Rick and Morty API](https://rickandmortyapi.com/)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
