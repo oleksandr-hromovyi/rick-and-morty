@@ -4,7 +4,6 @@
     min-width: 100px;
 }
 
-
 .char__list {
     display: flex;
     flex-wrap: wrap;
@@ -18,4 +17,29 @@
     left: 10px;
     height: 20px;
     width:70px
+}
+
+.cards{
+    height:390px;
+    width:270px;
+}
+
+.cards:hover {
+    box-shadow: 1px 1px 5px #9F0013;
+}
+
+
+@media (max-width: 926px) {
+    .card {
+       max-width: 300px;
+   }
+   .cards{
+   
+   height:auto;
+   width: auto;
+}
+.card-img-top {
+    height: 300px;
+    width: 300px;
+}
 }

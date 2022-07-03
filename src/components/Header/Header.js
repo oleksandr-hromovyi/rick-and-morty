@@ -2,18 +2,33 @@ import React from 'react';
 import './Header.css';
 import NavigationBar from '../NavigationBar/NavigationBar'
 import { Link } from 'react-router-dom';
+import { auth } from '../../firebase';
+import {useAuthState} from 'react-firebase-hooks/auth'
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 const Header = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+  const signOutClick = () =>{
+    auth.signOut(); 
+    navigate('/register');}
   return (
     <>
+     <div className="logOut">
+        <h5>Welcome, {user?.email ? user?.email : "guest"}</h5>
+        <Button 
+        className = "sign-out-btn"
+        onClick={()=>signOutClick()}>Sign out</Button>
+        </div>
     <header className="app__header">
-    <Link to="/" className="app__title">
+    <Link to="/characters" className="app__title">
         
-            <span>Rick & Morty</span> WIKI
+            <p><span>Rick & Morty</span> WIKI</p>
         
     </Link>
 
     <NavigationBar/>
- 
 </header>
 </>
   )

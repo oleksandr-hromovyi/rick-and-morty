@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {Card, Badge} from 'react-bootstrap';
 import { Spinner } from 'react-bootstrap'
+import './Cards.css'
 
 export const CardInfo = () => {
     let { id } = useParams();
     let _api = `https://rickandmortyapi.com/api/character/${id}`;
     let [fetchData, setfetchData] = useState("")
-    const [loading, setLoading] = useState(true);
+    let [loading, setLoading] = useState(true);
 
     console.log(loading)
     let statusArr = {
@@ -17,20 +18,22 @@ export const CardInfo = () => {
     }
     
     let {name, status, location, species, image, gender, origin } = fetchData;   
-  
-  useEffect(()=>{
-    (async function(){
-      let response = await fetch(_api).then(res=>res.json());
-      setfetchData(response)
-      setLoading(loading => false)
-    })()
-    }, [_api])
     
-    const spinner = loading ? <Spinner animation="border" style={{'height':'248px', 'width': '248px'}}/> : null;
+    useEffect(()=>{
+      (async function(){
+        let response = await fetch(_api)
+        .then(res=>res.json())
+        .catch(err=> console.log(err));
+        setfetchData(response)
+        setLoading(loading => false)
+      })()
+      }, [_api])
+    
+    const spinner = loading ? <Spinner animation="border" style={{'height':'248px', 'width': '248px', 'marginTop': '30vh'}}/> : null;
     const View = () => {
       return(
         <>
-          <Card>
+          <Card style={{"marginTop":"30vh"}}>
             <Card.Img variant="top" src={image} className='fw-bold pb-2'/>
             <Card.Title style={{textAlign:"center"}}><span className='fw-bold'>{name}</span></Card.Title>
             <Card.Text><span className='fw-bold'>Gender:</span> {gender}</Card.Text>

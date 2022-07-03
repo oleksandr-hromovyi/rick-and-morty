@@ -55,7 +55,7 @@ let clear = () => {
   }
 
 return (
-    <div className="char__filters">
+    <div className="filters">
         <span className='filters__span text-primary text-decoration-underline text-center'><b>Filters</b></span><br/> 
         <Form>   
         <Form.Control 
@@ -91,7 +91,7 @@ return (
         </Accordion>
 
         <button
-            className="btn btn-primary"
+            className="btn btn-primary clear-btn"
             onClick={clear}  
             type="reset">
                 Clear all filters

@@ -1,16 +1,24 @@
-.char__filters {
+.filters {
     min-width: 400px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    margin: 20px;
-   
-
+    margin-right: 20px;
 }
  
 .filters__span {
-    
-    padding-top: 20px;
+    padding-top: 10px;
     margin: 0 auto;
-    
+}
+
+.clear-btn {
+    display: block;
+    margin: 20px auto;
+}
+
+@media (max-width: 1080px) {
+    .char__filters {
+        min-width: 200px;
+margin-right: 0px;
+    }
 }
