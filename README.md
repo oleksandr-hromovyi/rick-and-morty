@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Rick and Morty Wiki
 
-The project allows you to quickly search information that you for the criteria of interest. 
+The project allows you to quickly search information by the criteria of interest. 
 For convenience was created filtering by characters, episodes and locations.
 Also was created authorization and authentication forms with using Firebase.
 This project was made with React and some of the most used front-end libraries.
