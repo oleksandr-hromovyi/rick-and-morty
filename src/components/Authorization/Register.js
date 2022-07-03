@@ -66,7 +66,7 @@ return (
         <img src={logo} className="logo"/>
         {! success ? (<Form onSubmit={handleSubmit} className="form">
         <h2 style={{'textAlign': 'center','margin':'10px'}}>Registrarion</h2>
-        {error ? <h3 className="logoColor" style={{'textAlign': 'center'}}>Server Error</h3> : null}
+        {error ? <h3 className="logoColor" style={{'textAlign': 'center'}}>Error</h3> : null}
         <Form.Group className="mb-3" >
         <Form.Label htmlFor="username"> {  check(validName) }Email:</Form.Label>
         <Form.Control 

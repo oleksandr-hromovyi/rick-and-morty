@@ -10,7 +10,7 @@ export const CardInfo = () => {
     let [fetchData, setfetchData] = useState("")
     let [loading, setLoading] = useState(true);
 
-    console.log(loading)
+    
     let statusArr = {
       'Alive': 'success',
       'Dead': 'danger',
