@@ -58,7 +58,7 @@ return (
     <>
     <section >
       <div className="reg-container">
-        <img src={logo} className="logo"/>
+        <img src={logo} alt="logo" className="logo"/>
         {! success ? (<Form onSubmit={handleSubmit} className="form">
         <h2 style={{'textAlign': 'center','margin':'10px'}}>Registrarion</h2>
         {error ? <h3 className="logoColor" style={{'textAlign': 'center'}}>Error</h3> : null}

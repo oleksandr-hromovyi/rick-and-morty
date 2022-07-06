@@ -35,7 +35,7 @@ const LogIn = () => {
   return (    
   <section >
     <div className="reg-container">
-      <img src={logo} className="logo"/>
+      <img src={logo} alt="logo" className="logo"/>
       <Form onSubmit={handleSubmit} className="form">
         
         <h2 style={{'textAlign': 'center','margin':'10px'}}>Log In</h2>
