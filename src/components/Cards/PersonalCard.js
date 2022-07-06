@@ -33,7 +33,7 @@ export const PersonalCard = () => {
      
        
           <Card style={{"marginTop":"10vh"}}>
-            <Card.Img variant="top" src={image} className='fw-bold pb-2'/>
+            <Card.Img variant="top" src={image} alt={name} className='fw-bold pb-2'/>
             <Card.Title style={{textAlign:"center"}}><span className='fw-bold'>{name}</span></Card.Title>
             <Card.Text><span className='fw-bold'>Gender:</span> {gender}</Card.Text>
             <Card.Text><span className='fw-bold'>Species:</span> {species}</Card.Text>

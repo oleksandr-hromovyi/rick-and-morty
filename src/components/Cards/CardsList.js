@@ -22,7 +22,7 @@ const Cards = ({characters, page}) => {
              >
           <Card >
               <Badge pill bg={status[item.status]}>{item.status}</Badge> 
-              <Card.Img variant="top" src={item.image} width="248px" height="248px"/> 
+              <Card.Img variant="top" src={item.image} alt={item.name} width="248px" height="248px"/> 
               <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>Last location: {item.location.name}</Card.Text>
