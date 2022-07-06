@@ -5,3 +5,15 @@
     margin-right: 20px;
     margin-top: 10px;
 }
+
+.filters__span {
+    padding-top: 10px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1300px) {
+    .filterBox{
+        margin: 0px;     
+  } 
+  }
+

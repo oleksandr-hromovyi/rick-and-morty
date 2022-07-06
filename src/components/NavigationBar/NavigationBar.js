@@ -7,7 +7,7 @@ const NavigationBar = () => {
     <ul>
         <li><NavLink to="/characters" data-name="characters"  className="nav-link">Characters</NavLink></li>
         <li><NavLink to="/location" data-name="locations" className="nav-link">Location</NavLink></li>
-        <li><NavLink to="/episodes" data-name="episode" className="nav-link">Episode</NavLink></li>
+        <li><NavLink to="/episode" data-name="episode" className="nav-link">Episode</NavLink></li>
     </ul>
 
 </nav>

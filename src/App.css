@@ -55,7 +55,7 @@ main {
 }
 
 
-@media (max-width: 1080px) {
+@media (max-width: 1300px) {
   .char__content{
     flex-direction: column;
 } 

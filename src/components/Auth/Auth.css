@@ -1,23 +1,19 @@
-.container{
+.reg-container{
     padding: 20px;
-margin: calc(20vh/2) auto;
-height: auto;
-width: 380px;
-border: 1px solid black;
-border-radius: 2%;
-display: flex;
-flex-direction: column;
-justify-content:center;
-box-shadow: 2px 2px 2px #808080;
+    margin: 0 auto;
+    height: auto;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
 }
 
-.container p {
+.reg-container p {
     margin-top: 20px;
 }
 
 .logo {
-    height: 213px;
-    width: 250px;
+ 
     margin: 0 auto
 }
 
@@ -42,21 +38,21 @@ label {
     display: flex;
 }
 
-.regIngo{
+.regInfo{
     text-align: center;
     margin-bottom: 10px;
 }
-a {
-    display: flex;
+.authLink {
+    width:100%;
 }
 
 @media (max-width: 450px) {
-    .container{
+    .reg-container{
         border: none;
         box-shadow: none;
     }
     @media (max-width: 380px) {
-       .container{
+       .reg-container{
         width:auto;
         margin: 0 auto;
         padding: 10px;

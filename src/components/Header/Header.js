@@ -13,15 +13,20 @@ const Header = () => {
   const signOutClick = () =>{
     auth.signOut(); 
     navigate('/register');}
-  return (
+    
+    return (
     <>
      <div className="logOut">
         <h5>Welcome, {user?.email ? user?.email : "guest"}</h5>
-        <Button 
+       { user ? (<Button
         className = "sign-out-btn"
-        onClick={()=>signOutClick()}>Sign out</Button>
+        onClick={()=>signOutClick()}>Sign out</Button>) :
+       ( <Button
+        className = "sign-out-btn"
+        onClick={()=>navigate('/logIn')}>Sign in</Button>)
+        }
         </div>
-    <header className="app__header">
+    <div className="app__header">
     <Link to="/characters" className="app__title">
         
             <p><span>Rick & Morty</span> WIKI</p>
@@ -29,9 +34,9 @@ const Header = () => {
     </Link>
 
     <NavigationBar/>
-</header>
-</>
+    </div>
+  </>
   )
 }
 
-export default Header
+export default Header;
