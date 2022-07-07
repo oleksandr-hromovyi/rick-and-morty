@@ -15,8 +15,8 @@ const Page = ({category,arrPath}) => {
   let [fetchData, setfetchData] = useState([]);
   let {name, dimension, type, air_date} = fetchData;
   let [error, setError] = useState(false)
-
   let [pageItemAmount, setpageItemAmount] = useState("");
+  let [loading, setLoading] = useState(true);
   
   useEffect(()=>{
     setpageItemAmount("");
@@ -51,9 +51,10 @@ const Page = ({category,arrPath}) => {
              } ))
    
     setCharacters(characterArr);
+    setLoading(false);
     
 
-  })();
+  })()
 
   }, [_api]);
 
@@ -80,7 +81,7 @@ const Page = ({category,arrPath}) => {
                             })} 
                       </Form.Select>
                 </div></div>
-               <CardsList page ={`/${categoryLink}/`} characters={characters}/> 
+               <CardsList page ={`/${categoryLink}/`} characters={characters} loading={loading}/> 
             </div>              
         </main>  
        </>) : (<h1 className='text-center mb-4' style={{color: "#9F0013"}}>Server Error</h1>)}

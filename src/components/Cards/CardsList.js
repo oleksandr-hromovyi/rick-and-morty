@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 import './Cards.css';
 
-const Cards = ({characters, page}) => {
+const Cards = ({characters, page, loading}) => {
   let display;
 
   if(characters) {
@@ -34,8 +34,10 @@ const Cards = ({characters, page}) => {
          
   } if (!characters?.length){
         display = <h2 >Sorry, there is no information</h2>;
-  } if (!characters) {
+  } if (!characters && !loading) {
     display = <h2>Sorry, we didn't find matches</h2>
+  } if (!characters && loading) {
+    display = <h1>Loading...</h1>
   }
   return (
     <div className="char__list">{display}</div>

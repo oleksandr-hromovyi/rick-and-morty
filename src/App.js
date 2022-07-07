@@ -6,6 +6,7 @@ import LogIn from './components/Auth/LogIn';
 import Register from './components/Auth/Register';
 import HomePage from './components/Pages/HomePage';
 import Header from './components/Header/Header';
+import Page404 from './components/Pages/Page404';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -28,6 +29,7 @@ export default function App() {
       <Route path="location/:id" element={<PersonalCard />}/>
       <Route path="/login" element={<LogIn />}/>
       <Route path="/register" element={<Register />}/>
+      <Route path="/page404" element={<Page404 />}/>
      
       </Routes>
     </BrowserRouter>

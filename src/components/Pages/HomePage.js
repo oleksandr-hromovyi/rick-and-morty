@@ -14,7 +14,7 @@ const Characters = () => {
   let [status, setStatus] = useState("");
   let [species, setSpecies] = useState("");
   let [error, setError] = useState(false);
- 
+  let [loading, setLoading] = useState(true);
 
   let _api = `https://rickandmortyapi.com/api/character?page=${pageNumber}&name=${search}&gender=${gender}&status=${status}&species=${species}`;
 
@@ -29,7 +29,9 @@ const Characters = () => {
       .then(res=>res.json())
       .then(res => setfetchData(res))
       .catch(err=>setError(true));
+      setLoading(false);
       })()
+      
   
      
     }, [_api])
@@ -46,7 +48,7 @@ const Characters = () => {
           setStatus={setStatus}
           setSpecies={setSpecies}/>
        { error  ? (<h1 className='text-center mb-4' style={{color: "#9F0013"}}>Server Error</h1>) : 
-       (<CardsList page="/" characters={characters}/>)  }
+       (<CardsList page="/" characters={characters} loading={loading}/>)  }
       </div>              
     </main>  
     <footer>
