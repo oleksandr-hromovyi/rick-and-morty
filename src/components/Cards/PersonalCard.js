@@ -5,13 +5,13 @@ import {useParams, useNavigate} from 'react-router-dom';
 import {Card, Badge} from 'react-bootstrap';
 import { Spinner } from 'react-bootstrap';
 
+
 import './Cards.css';
 
 export const PersonalCard = () => {
     
     let navigate = useNavigate();
     const { id } = useParams();
-    
     const isCardValid = !isNaN(id);
 
     let _api = `https://rickandmortyapi.com/api/character/${id}`;
@@ -26,9 +26,9 @@ export const PersonalCard = () => {
     }, [navigate]);
 
     useEffect(() => {
-      if (!isCardValid) {
+      if (!isCardValid || (isCardValid && (id>826 || id<1))) {
         handleBackTo404();
-      }
+      } 
     }, [isCardValid, handleBackTo404]) ;
 
     useEffect(()=>{
@@ -36,7 +36,7 @@ export const PersonalCard = () => {
       (async function(){
         let response = await fetch(_api)
         .then(res=>res.json())
-        .catch(err=> setError(true));
+        .catch(err=> setError(true))
         response && setfetchData(response);
         setLoading(loading => false)
       })())

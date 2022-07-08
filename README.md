@@ -13,6 +13,7 @@ Link of the Public API used: [Rick and Morty API](https://rickandmortyapi.com/)
 
 ## TODO.
 
+- improve routes (improve the transition condition to the 404 page)
 - add check for data type (PropTypes for example);
 - add spinner, move it to a separate component;
 - add a back button to the previous page when viewing a specific character card;

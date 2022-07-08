@@ -6,6 +6,7 @@ import CardsList from '../Cards/CardsList';
 import Pagination from '../Pagination/Pagination';
 import CharFilter from '../CharFilter/CharFilter';
 
+
 const Characters = () => {
 
   let [pageNumber, setPageNumber] = useState(1);
@@ -20,6 +21,9 @@ const Characters = () => {
 
   let [fetchData, setfetchData] = useState([]);
   let {results:characters, info} = fetchData;
+
+
+
 
   useEffect(()=>{
  
