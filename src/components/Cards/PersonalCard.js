@@ -4,12 +4,16 @@ import {status} from '../Utils/data';
 import {useParams, useNavigate} from 'react-router-dom';
 import {Card, Badge} from 'react-bootstrap';
 import { Spinner } from 'react-bootstrap';
+import ServerError from '../ServerError/ServerError';
 
 
 import './Cards.css';
 
+
+
 export const PersonalCard = () => {
     
+
     let navigate = useNavigate();
     const { id } = useParams();
     const isCardValid = !isNaN(id);
@@ -18,15 +22,14 @@ export const PersonalCard = () => {
     let [fetchData, setfetchData] = useState("")
     let [loading, setLoading] = useState(true);
     let [error, setError] = useState(false);
-
     let {name, status:statusFD, location, species, image, gender, origin } = fetchData; 
-    
+
     const handleBackTo404 = useCallback(() => {
       navigate('/page404');
     }, [navigate]);
 
     useEffect(() => {
-      if (!isCardValid || (isCardValid && (id>826 || id<1))) {
+      if (!isCardValid || id>826 || id<1) {
         handleBackTo404();
       } 
     }, [isCardValid, handleBackTo404]) ;
@@ -37,8 +40,10 @@ export const PersonalCard = () => {
         let response = await fetch(_api)
         .then(res=>res.json())
         .catch(err=> setError(true))
+
         response && setfetchData(response);
         setLoading(loading => false)
+    
       })())
       }, [_api])
     
@@ -46,7 +51,7 @@ export const PersonalCard = () => {
     const View = () => {
       return(  
  <>
-     {isCardValid && ( <Card style={{"marginTop":"10vh"}}>
+     {(isCardValid && !error) && ( <Card style={{"marginTop":"10vh"}}>
      <Card.Img variant="top" src={image} alt={name} className='fw-bold pb-2'/>
      <Card.Title style={{textAlign:"center"}}><span className='fw-bold'>{name}</span></Card.Title>
      <Card.Text><span className='fw-bold'>Gender:</span> {gender}</Card.Text>
@@ -61,7 +66,7 @@ export const PersonalCard = () => {
       )
     }
     const content = !(spinner) && !error ? <View/> : null;
-    const errMessage = error &&  <h1>Server Error</h1> 
+    const errMessage = error && <ServerError/>
   
   return (
     <div className='box'>

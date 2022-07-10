@@ -7,6 +7,7 @@ import {useAuthState} from 'react-firebase-hooks/auth'
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+
 const Header = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ const Header = () => {
     </Link>
 
     <NavigationBar/>
+
     </div>
   </>
   )

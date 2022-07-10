@@ -5,7 +5,7 @@ import './Pages.css';
 import CardsList from '../Cards/CardsList';
 import Pagination from '../Pagination/Pagination';
 import CharFilter from '../CharFilter/CharFilter';
-
+import ServerError from '../ServerError/ServerError';
 
 const Characters = () => {
 
@@ -21,9 +21,6 @@ const Characters = () => {
 
   let [fetchData, setfetchData] = useState([]);
   let {results:characters, info} = fetchData;
-
-
-
 
   useEffect(()=>{
  
@@ -51,7 +48,7 @@ const Characters = () => {
           setGender={setGender}
           setStatus={setStatus}
           setSpecies={setSpecies}/>
-       { error  ? (<h1 className='text-center mb-4' style={{color: "#9F0013"}}>Server Error</h1>) : 
+       { error  ? (<ServerError/>) : 
        (<CardsList page="/" characters={characters} loading={loading}/>)  }
       </div>              
     </main>  

@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import CardsList from '../Cards/CardsList';
 import Location from './Location'
 import Episodes from './Episodes';
+import ServerError from '../ServerError/ServerError';
 
 
 const Page = ({category,arrPath}) => {
@@ -84,7 +85,7 @@ const Page = ({category,arrPath}) => {
                <CardsList page ={`/${categoryLink}/`} characters={characters} loading={loading}/> 
             </div>              
         </main>  
-       </>) : (<h1 className='text-center mb-4' style={{color: "#9F0013"}}>Server Error</h1>)}
+       </>) : (<ServerError/>)}
     </>
     )
 }
