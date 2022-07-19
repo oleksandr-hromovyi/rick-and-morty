@@ -14,8 +14,7 @@ const LogIn = () => {
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('')
     const [error, setErr] = useState(false);
-    const [success, setSuccess] = useState(false); 
-
+   
     useEffect(()=>{
         userRef.current.focus();
     },[])
@@ -26,7 +25,6 @@ const LogIn = () => {
         e.preventDefault()
         signInWithEmailAndPassword(auth, user, password)
         .then(auth => {
-            setSuccess(true);
             navigate('/characters')
         })
         .catch(err => setErr(true))
