@@ -51,7 +51,7 @@ export const PersonalCard = () => {
     const View = () => {
       return(  
  <>
-     {(isCardValid && !error) && ( <Card style={{"marginTop":"10vh"}}>
+     {(isCardValid && !error) && ( <Card style={{"marginTop":"5vh"}}>
      <Card.Img variant="top" src={image} alt={name} className='fw-bold pb-2'/>
      <Card.Title style={{textAlign:"center"}}><span className='fw-bold'>{name}</span></Card.Title>
      <Card.Text><span className='fw-bold'>Gender:</span> {gender}</Card.Text>

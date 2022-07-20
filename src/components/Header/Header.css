@@ -32,7 +32,7 @@
 }
 .nav-link {
     color: #000!important;
-    padding: 0px;
+    padding: 0px!important;
     margin-left: 15px;
 }
 

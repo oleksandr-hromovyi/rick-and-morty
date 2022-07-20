@@ -70,7 +70,7 @@
    width: auto;
 }
 .card-img-top {
-    width: 300px;
+    width: 300px!important;
     height: 300px;
 }
 .spinner-border {
