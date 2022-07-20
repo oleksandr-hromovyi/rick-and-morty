@@ -32,9 +32,6 @@ const Characters = () => {
       .catch(err=>setError(true));
       setLoading(false);
       })()
-      
-  
-     
     }, [_api])
 
   return (
@@ -57,7 +54,8 @@ const Characters = () => {
     
       info={info}
       setPageNumber={setPageNumber}
-      pageNumber={pageNumber}/> 
+      pageNumber={pageNumber}
+     /> 
     </footer>
   </> )
 }

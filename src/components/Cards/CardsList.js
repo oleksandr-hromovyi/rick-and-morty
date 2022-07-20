@@ -1,6 +1,5 @@
 import React from 'react';
 import {status} from '../Utils/data';
-
 import {Card, Badge} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
@@ -9,17 +8,18 @@ import './Cards.css';
 const Cards = ({characters, page, loading}) => {
   let display;
 
-  if(characters) {
+   if(characters) {
      
     display = characters.map(item => {
       let {id} = item
 
       return (
-           <Link
+        <Link
             to={`${page}${id}`}
             key={item.id}
             className="cards"
              >
+             
           <Card >
               <Badge pill bg={status[item.status]}>{item.status}</Badge> 
               <Card.Img variant="top" src={item.image} alt={item.name} width="248px" height="248px"/> 
@@ -29,6 +29,8 @@ const Cards = ({characters, page, loading}) => {
               </Card.Body>
           </Card>
         </Link>
+          
+    
           )
         })
          

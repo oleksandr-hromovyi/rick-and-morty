@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import { Form } from 'react-bootstrap';
 import CardsList from '../Cards/CardsList';
 import Location from './Location'
@@ -20,18 +20,19 @@ const Page = ({category,arrPath}) => {
   let [loading, setLoading] = useState(true);
   
   useEffect(()=>{
-    setpageItemAmount("");
     setPageData('1');
-  }, [categoryLink, category])
+    setpageItemAmount("");
+  }, [categoryLink])
 
 
   useEffect(()=>{
-
+   
     (async function () {
-      
-        let data = await fetch(_api).then((res) => res.json())
+
+        let data = await fetch(_api)
+        .then((res) => res.json())
         .catch((err)=> setError(true));
-        setfetchData(data);
+        data && setfetchData(data);
         
         let items = await fetch(`https://rickandmortyapi.com/api/${categoryLink}`)
               .then((res) => res.json())
@@ -41,7 +42,6 @@ const Page = ({category,arrPath}) => {
         
         let characterArr = await Promise.all(
               data[arrPath].map(async (char) => {
-                
                     try {
                     const res = await fetch(char);
                     return await res.json(); //get single character
@@ -50,14 +50,10 @@ const Page = ({category,arrPath}) => {
                   } 
                  
              } ))
-   
     setCharacters(characterArr);
     setLoading(false);
-    
-
   })()
-
-  }, [_api]);
+  }, [pageData, pageItemAmount]);
 
  return (
       <>

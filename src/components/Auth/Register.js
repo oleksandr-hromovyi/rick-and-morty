@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import {Form, Button} from "react-bootstrap";
 import { X, Check, BookmarkCheck} from 'react-bootstrap-icons';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -9,7 +8,7 @@ import { Link } from 'react-router-dom';
 import logo from  '../../img/rick_morty.png'
 import './Auth.css'
 
-const EMAIL_REGEX = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+const EMAIL_REGEX = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,3}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{5,15}$/;
 
 
