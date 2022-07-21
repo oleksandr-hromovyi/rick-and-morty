@@ -11,31 +11,29 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
+
   const signOutClick = () =>{
     auth.signOut(); 
-    navigate('/register');}
+    navigate('/logIn');}
     
     return (
     <>
-     <div className="logOut">
-        <h5>Welcome, {user?.email ? user?.email : "guest"}</h5>
-       { user ? (<Button
-        className = "sign-out-btn"
-        onClick={()=>signOutClick()}>Sign out</Button>) :
-       ( <Button
-        className = "sign-out-btn"
-        onClick={()=>navigate('/logIn')}>Sign in</Button>)
-        }
-        </div>
-    <div className="app__header">
-    <Link to="/characters" className="app__title">
-        
-            <p><span>Rick & Morty</span> WIKI</p>
-        
-    </Link>
-
+       <div className="logOut">
+          <h5>Welcome, {user?.email ? user?.email : "guest"}</h5>
+          { user ? (<Button
+                    className = "sign-out-btn"
+                    onClick={()=>signOutClick()}>Sign out</Button>) :
+          ( <Button
+            className = "sign-out-btn"
+            onClick={()=>navigate('/logIn')}>Sign in</Button>)
+          }
+      </div>
+      <div className="app__header">
+      
+      <Link to="/characters" className="app__title">
+        <p><span>Rick & Morty</span> WIKI</p>
+      </Link>
     <NavigationBar/>
-
     </div>
   </>
   )

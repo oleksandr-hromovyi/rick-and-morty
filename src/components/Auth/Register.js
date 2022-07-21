@@ -18,11 +18,9 @@ const Register = () => {
     const emailRef = useRef();
     const [email, setEmail] = useState("");
     const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
-
+    
     const [password, setPassword] = useState("");
     const [validPassword, setValidPassword] = useState(false); 
-    const [passwordFocus, setPasswordFocus] = useState(false);
 
     const [error, setErr] = useState(false);
     const [success, setSuccess] = useState(false); 
@@ -70,8 +68,6 @@ return (
             autoComplete="off"
             onChange={(e)=> setEmail(e.target.value.toLowerCase())}
             required
-            onFocus={()=>setEmailFocus(true)}
-            onBlur={()=>setEmailFocus(false)}
             placeholder="Enter email" />
         </Form.Group>
         <Form.Group className="mb-3" >
@@ -83,8 +79,6 @@ return (
             onChange={(e)=> setPassword(e.target.value)}
             value={password}
             required
-            onFocus={()=>setPasswordFocus(true)}
-            onBlur={()=>setPasswordFocus(false)}
             type="password" placeholder="Password" />
              <Form.Text className="text-muted">
              8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character.
@@ -98,8 +92,10 @@ return (
   
   ) : ( <h2 className='text-center mt-3'>Registration is successful <BookmarkCheck color="green" /></h2>)}
         
-        {!success ? (<p className="regInfo"> Already registered?</p>) : (<p className="regInfo"> Please click on the link below:</p>)}
-          <Link to="/login">
+        {!success ? (<p className="regInfo"> Already registered?</p>) :        
+        (<p className="regInfo"> Please click on the link below:</p>)}
+
+          <Link to={!success ? "/login" : "/characters"}>
           <Button variant="primary" style={{"width":"100%"}} className="authLink">Sign In</Button>
           </Link>
       
