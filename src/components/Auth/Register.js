@@ -75,7 +75,7 @@ return (
             placeholder="Enter email" />
         </Form.Group>
         <Form.Group className="mb-3" >
-        <Form.Label htmlFor="password">{ check(validPassword) }Password</Form.Label>
+        <Form.Label htmlFor="password">{ check(validPassword) }Password:</Form.Label>
         <Form.Control 
             title="8 to 24 characters.
             Must include uppercase and lowercase letters, a number and a special character"
@@ -86,6 +86,9 @@ return (
             onFocus={()=>setPasswordFocus(true)}
             onBlur={()=>setPasswordFocus(false)}
             type="password" placeholder="Password" />
+             <Form.Text className="text-muted">
+             8 to 24 characters. Must include uppercase and lowercase letters, a number and a special character.
+        </Form.Text>
           </Form.Group>
     
             <Button variant="primary" type="submit" className="authLink" disabled={!validEmail || !validPassword ? true : false}>

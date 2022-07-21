@@ -13,7 +13,6 @@ import './Cards.css';
 
 export const PersonalCard = () => {
     
-
     let navigate = useNavigate();
     const { id } = useParams();
     const isCardValid = !isNaN(id);

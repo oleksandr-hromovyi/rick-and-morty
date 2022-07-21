@@ -51,7 +51,7 @@ const LogIn = () => {
             placeholder="Enter email" />
       </Form.Group>
       <Form.Group className="mb-3" >
-      <Form.Label htmlFor="password">Password</Form.Label>
+      <Form.Label htmlFor="password">Password:</Form.Label>
       <Form.Control 
             title="8 to 24 characters.
             Must include uppercase and lowercase letters, a number and a special character"
